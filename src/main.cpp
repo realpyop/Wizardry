@@ -1,5 +1,6 @@
 #include <iostream>
 #include <raylib.h>
+#include "player.hpp"
 
 using namespace std;
 
@@ -14,6 +15,8 @@ int main()
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Wizardry");
     SetTargetFPS(60);
 
+    Player player;
+
     while(!WindowShouldClose())
     {
         BeginDrawing();
@@ -22,10 +25,7 @@ int main()
         DrawRectangle(320, 540, 640, 20, WHITE);
 
         //Drawing Sprite
-        Texture2D character = LoadTexture("./resources/character_spritesheet.png");
-        Rectangle source = Rectangle{0 , 0, 32, 32};
-        Rectangle destination = Rectangle{0, 0, 32, 32};
-        DrawTexturePro(character, source, destination, Vector2{0, 0}, 0, WHITE);
+        player.Draw();
 
         EndDrawing();
     }
