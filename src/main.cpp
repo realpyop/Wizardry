@@ -1,11 +1,11 @@
 #include <iostream>
 #include <raylib.h>
 #include "player.hpp"
+#include "constants.hpp"
 
 using namespace std;
 
-float WINDOW_HEIGHT = 720;
-float WINDOW_WIDTH = 1280;
+
 
 
 int main()

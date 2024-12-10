@@ -1,4 +1,6 @@
 #include "player.hpp"
+#include "constants.hpp"
+
 
 Player::Player()
 {
@@ -7,7 +9,7 @@ Player::Player()
 
 void Player::Draw()
 {
-    Rectangle source = Rectangle{0 , 0, 32, 32};
-    Rectangle destination = Rectangle{0, 0, 32, 32};
-    DrawTexturePro(character_spritesheet, source, destination, Vector2{0, 0}, 0, WHITE);
+    Rectangle source = Rectangle{0 , 0, PLAYER_SIZE, PLAYER_SIZE};
+    Rectangle destination = Rectangle{WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, source.width * 2, source.height * 2};
+    DrawTexturePro(character_spritesheet, source, destination, Vector2{destination.width / 2, destination.height / 2}, 0, WHITE);
 }
