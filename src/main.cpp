@@ -20,13 +20,15 @@ int main()
     while(!WindowShouldClose())
     {
         BeginDrawing();
+        player.HandleInput();
 
         //Testing Platform
-        DrawRectangle(320, 540, 640, 20, WHITE);
+        DrawRectangle((WINDOW_WIDTH / 2) / 2, (WINDOW_HEIGHT / 2) + 30, 640, 20, WHITE);
 
         //Drawing Sprite
         player.Draw();
 
+        ClearBackground(BLACK); 
         EndDrawing();
     }
 
