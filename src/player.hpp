@@ -15,6 +15,7 @@ class Player
         Texture2D character_spritesheet;
         float pos_x;
         float pos_y;
-        float speed_x;
-        float speed_y;
+        float velocity_x;
+        float velocity_y;
+        bool is_jumping;
 };

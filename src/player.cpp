@@ -7,8 +7,9 @@ Player::Player()
     character_spritesheet = LoadTexture("./resources/character_spritesheet.png");
     pos_x = WINDOW_WIDTH / 2;
     pos_y = WINDOW_HEIGHT / 2;
-    speed_x = 3;
-    speed_y = 3;
+    velocity_x = 5;
+    velocity_y = 0;
+    is_jumping = false; 
 
 };
 
@@ -23,21 +24,41 @@ void Player::HandleInput()
 {
     if(IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D))
     {
-        pos_x += speed_x; 
+        pos_x += velocity_x; 
     }
     
     if(IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A))
     {
-        pos_x -= speed_x;
+        pos_x -= velocity_x;
     }
 
-    if(IsKeyDown(KEY_UP) || IsKeyDown(KEY_W) || IsKeyDown(KEY_SPACE))
+    if(IsKeyPressed(KEY_UP) || IsKeyPressed(KEY_W) || IsKeyPressed(KEY_SPACE))
     {
-        PlayerJump();
+        if(!is_jumping)
+        {
+            PlayerJump();
+        }
     }
+
 }
 
 void Player::PlayerJump()
 {
-    
+    if (is_jumping)
+    {
+        pos_y -= velocity_y;
+        velocity_y -= 0.5;  // Gravity
+
+        if(pos_y >= WINDOW_HEIGHT / 2)
+        {
+            pos_y = WINDOW_HEIGHT / 2;
+            is_jumping = false;
+            velocity_y = 0;
+        }
+    }
+    else
+    {
+        is_jumping = true;
+        velocity_y -= 10;
+    }
 }
