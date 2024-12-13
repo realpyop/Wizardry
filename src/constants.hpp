@@ -4,3 +4,5 @@
 #define WINDOW_WIDTH  1280
 
 #define PLAYER_SIZE 32
+
+#define GRAVITY 0.5

@@ -10,6 +10,8 @@ class Player
         void Draw();
         void HandleInput();
         void PlayerJump();
+        void MoveLeft();
+        void MoveRight();
 
     private:
         Texture2D character_spritesheet;

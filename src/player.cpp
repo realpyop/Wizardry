@@ -24,12 +24,12 @@ void Player::HandleInput()
 {
     if(IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D))
     {
-        pos_x += velocity_x; 
+        MoveRight();
     }
     
     if(IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A))
     {
-        pos_x -= velocity_x;
+        MoveLeft();
     }
 
     if(IsKeyPressed(KEY_UP) || IsKeyPressed(KEY_W) || IsKeyPressed(KEY_SPACE))
@@ -39,12 +39,10 @@ void Player::HandleInput()
             PlayerJump();
         }
     }
-
     if (is_jumping)
     {
         PlayerJump();
     }
-
 }
 
 void Player::PlayerJump()
@@ -52,7 +50,7 @@ void Player::PlayerJump()
     if (is_jumping)
     {
         pos_y -= velocity_y;
-        velocity_y -= 0.5;  // Gravity
+        velocity_y -= GRAVITY;  // Gravity
 
         // Check if player landed
         if(pos_y >= (WINDOW_HEIGHT / 2) + 30)
@@ -67,4 +65,14 @@ void Player::PlayerJump()
         is_jumping = true;
         velocity_y += 10;   // Initial jump velocity
     }
+}
+
+void Player::MoveLeft()
+{
+    pos_x -= velocity_x;
+}
+
+void Player::MoveRight()
+{
+    pos_x += velocity_x; 
 }
