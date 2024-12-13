@@ -40,6 +40,11 @@ void Player::HandleInput()
         }
     }
 
+    if (is_jumping)
+    {
+        PlayerJump();
+    }
+
 }
 
 void Player::PlayerJump()
@@ -49,7 +54,8 @@ void Player::PlayerJump()
         pos_y -= velocity_y;
         velocity_y -= 0.5;  // Gravity
 
-        if(pos_y >= WINDOW_HEIGHT / 2)
+        // Check if player landed
+        if(pos_y >= (WINDOW_HEIGHT / 2) + 30)
         {
             pos_y = WINDOW_HEIGHT / 2;
             is_jumping = false;
@@ -59,6 +65,6 @@ void Player::PlayerJump()
     else
     {
         is_jumping = true;
-        velocity_y -= 10;
+        velocity_y += 10;   // Initial jump velocity
     }
 }
